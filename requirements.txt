@@ -1,0 +1,6 @@
+scikit-learn
+networkx
+hdbscan
+numpy
+matplotlib
+jupyter
