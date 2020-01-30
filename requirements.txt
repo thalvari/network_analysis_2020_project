@@ -4,3 +4,5 @@ hdbscan
 numpy
 matplotlib
 jupyter
+seaborn
+umap
