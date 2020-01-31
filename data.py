@@ -5,7 +5,7 @@ import pandas as pd
 df = pd.read_csv("actors.csv")
 df['count'] = df['nconst'].map(df['nconst'].value_counts())
 df.sort_values('count', ascending=False, inplace=True)
-data = df.values[:10000000]
+data = df.values
 print(len(df.values))
 print(data)
 
