@@ -4,11 +4,11 @@ import pandas as pd
 
 df = pd.read_csv("actors.csv")
 df['count'] = df['nconst'].map(df['nconst'].value_counts())
-df = df[df['count'] >= 10]
+df = df[df['count'] >= 100]
 data = df.values
 print(len(data))
 
-print(df.sort_values('count', ascending=False))
+# print(df.sort_values('count', ascending=False))
 
 title_dict = dict()
 for x in data:
@@ -31,7 +31,7 @@ for x in data:
             edge_dict[(a, b)] = 1
         else:
             edge_dict[(a, b)] += 1
-        if edge_dict[(a, b)] == 10:
+        if edge_dict[(a, b)] == 20:
             edge_list.append((a, b))
         # if (y, x[1]) not in edge_set:
         #     edge_set.add((x[1], y))
