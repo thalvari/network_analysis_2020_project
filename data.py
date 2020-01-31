@@ -30,7 +30,7 @@ for x in data:
             edge_dict[(a, b)] = 1
         else:
             edge_dict[(a, b)] += 1
-        if edge_dict[(a, b)] == 5:
+        if edge_dict[(a, b)] == 10:
             edge_list.append((a, b))
         # if (y, x[1]) not in edge_set:
         #     edge_set.add((x[1], y))
