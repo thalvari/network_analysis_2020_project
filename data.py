@@ -15,13 +15,29 @@ for x in data:
         title_dict[x[0]] = list()
     title_dict[x[0]].append(x[1])
 
-edge_set = set()
+# edge_set = set()
+edge_dict = dict()
+edge_list = []
 for x in data:
     for y in title_dict[x[0]]:
-        if (y, x[1]) not in edge_set:
-            edge_set.add((x[1], y))
+        if y < x[1]:
+            a = y
+            b = x[1]
+        else:
+            a = x[1]
+            b = y
+        if (a, b) not in edge_dict:
+            edge_dict[(a, b)] = 1
+        else:
+            edge_dict[(a, b)] += 1
+        if edge_dict[(a, b)] == 5:
+            edge_list.append((a, b))
+        # if (y, x[1]) not in edge_set:
+        #     edge_set.add((x[1], y))
 
 with open("imdb.p", "wb") as f:
-    pickle.dump(list(edge_set), f)
+    # pickle.dump(list(edge_set), f)
+    pickle.dump(edge_list, f)
 
-print(len(list(edge_set)))
+# print(len(list(edge_set)))
+print(len(edge_list))
