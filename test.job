@@ -3,7 +3,7 @@
 #SBATCH --workdir=/wrk/users/thalvari/network_analysis_2020_project/
 #SBATCH -o test.txt
 #SBATCH -c 16
-#SBATCH --mem=192G
+#SBATCH --mem=96G
 #SBATCH -p bigmem
 #SBATCH -t 24:00:00
 
