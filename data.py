@@ -4,7 +4,7 @@ import pandas as pd
 
 df = pd.read_csv("actors.csv")
 df['count'] = df['nconst'].map(df['nconst'].value_counts())
-df = df[df['count'] >= 100]
+df = df[df['count'] >= 10]
 data = df.values
 print(len(data))
 

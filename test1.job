@@ -2,8 +2,8 @@
 #SBATCH -J na
 #SBATCH --workdir=/wrk/users/thalvari/network_analysis_2020_project/
 #SBATCH -o test1.txt
-#SBATCH -c 16
-#SBATCH --mem=100G
+#SBATCH -c 24
+#SBATCH --mem=250G
 #SBATCH -t 24:00:00
 
 srun papermill --log-output test1.ipynb test1.ipynb
