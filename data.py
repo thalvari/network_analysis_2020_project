@@ -5,7 +5,7 @@ import pandas as pd
 n_projects_min = 50
 n_projects_edge = 20
 
-df = pd.read_csv("actors.csv")
+df = pd.read_csv("data/actors.csv")
 df['count'] = df['nconst'].map(df['nconst'].value_counts())
 df = df[df['count'] >= n_projects_min]
 data = df.values
@@ -34,7 +34,7 @@ for x in data:
         if edge_dict[(a, b)] == n_projects_edge:
             edge_list.append((a, b))
 
-with open("imdb.p", "wb") as f:
+with open("data/imdb.p", "wb") as f:
     pickle.dump(edge_list, f)
 
 print(len(edge_list))

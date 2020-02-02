@@ -1,9 +1,9 @@
-scikit-learn
-networkx
 hdbscan
-numpy
-matplotlib
 jupyter
-seaborn
-umap-learn
+matplotlib
+networkx
+numpy
 papermill
+seaborn
+scikit-learn
+umap-learn
