@@ -3,7 +3,7 @@ import pickle
 import pandas as pd
 
 n_projects_min = 50
-n_projects_edge = 20
+n_shared_projects_edge = 10
 
 df = pd.read_csv("data/actors.csv")
 df['count'] = df['nconst'].map(df['nconst'].value_counts())
@@ -31,7 +31,7 @@ for x in data:
             edge_dict[(a, b)] = 1
         else:
             edge_dict[(a, b)] += 1
-        if edge_dict[(a, b)] == n_projects_edge:
+        if edge_dict[(a, b)] == n_shared_projects_edge:
             edge_list.append((a, b))
 
 with open("data/imdb.p", "wb") as f:
