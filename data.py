@@ -2,7 +2,7 @@ import pickle
 
 import pandas as pd
 
-n_projects_min = 50
+n_projects_min = 20
 n_shared_projects_edge = 10
 
 df = pd.read_csv("data/actors.csv")
