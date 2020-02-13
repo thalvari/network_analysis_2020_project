@@ -2,10 +2,10 @@ import pickle
 
 import pandas as pd
 
-n_projects_min = 40
-n_shared_projects_edge = 10
+n_projects_min = 10
+n_shared_projects_edge = 1
 
-df = pd.read_csv("data/actors.csv")
+df = pd.read_csv("data/movie_actors.csv")
 df['count'] = df['nconst'].map(df['nconst'].value_counts())
 df = df[df['count'] >= n_projects_min]
 data = df.values
