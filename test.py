@@ -17,7 +17,7 @@ _log.setLevel('ERROR')
 seed = 42
 np.random.seed(seed)
 
-with open("data/imdb.p", "rb") as f:
+with open("data/imdb.pkl", "rb") as f:
     G = nx.Graph()
     G.add_edges_from(pickle.load(f))
 

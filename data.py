@@ -4,8 +4,8 @@ import pickle
 import networkx as nx
 import pandas as pd
 
-n_projects_min = 10
-n_shared_projects_edge = 1
+n_projects_min = 2
+n_shared_projects_edge = 2
 
 df = pd.read_csv("data/movie_actors.csv")
 df = df.drop("index", axis=1)
@@ -35,7 +35,7 @@ for x in title_dict.values():
             edge_set.add(e)
 edge_list = list(edge_set)
 
-with open("data/imdb.p", "wb") as f:
+with open("data/imdb.pkl", "wb") as f:
     pickle.dump(edge_list, f)
 
 nodes = set()
