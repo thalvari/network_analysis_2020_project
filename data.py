@@ -4,21 +4,22 @@ import pickle
 import networkx as nx
 import pandas as pd
 
-n_projects_min = 2
-n_shared_projects_edge = 2
+n_projects_min = 1
+n_shared_projects_edge = 3
 
 df = pd.read_csv("data/movie_actors.csv")
 df = df.drop("index", axis=1)
 
-df['count'] = df['nconst'].map(df['nconst'].value_counts())
-df = df[df['count'] >= n_projects_min]
+df["count"] = df["nconst"].map(df["nconst"].value_counts())
+df = df[df["count"] >= n_projects_min]
 
 data = df.values
 title_dict = dict()
 for x in data:
-    if x[0] not in title_dict:
-        title_dict[x[0]] = set()
-    title_dict[x[0]].add(x[1])
+    tt_id, nm_id = x[:2]
+    if tt_id not in title_dict:
+        title_dict[tt_id] = set()
+    title_dict[tt_id].add(nm_id)
 
 edge_set = set()
 edge_dict = dict()
