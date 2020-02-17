@@ -4,7 +4,7 @@ import pickle
 import networkx as nx
 import pandas as pd
 
-n_projects_min = 10
+n_projects_min = 5
 n_shared_projects_edge = 1
 
 df = pd.read_csv("data/movie_actors.csv")
