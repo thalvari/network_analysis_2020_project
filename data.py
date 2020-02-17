@@ -1,10 +1,11 @@
+import itertools
 import pickle
 
 import networkx as nx
 import pandas as pd
 
 n_projects_min = 10
-n_shared_projects_edge = 10
+n_shared_projects_edge = 1
 
 df = pd.read_csv("data/movie_actors.csv")
 df = df.drop("index", axis=1)
@@ -16,25 +17,23 @@ data = df.values
 title_dict = dict()
 for x in data:
     if x[0] not in title_dict:
-        title_dict[x[0]] = list()
-    title_dict[x[0]].append(x[1])
+        title_dict[x[0]] = set()
+    title_dict[x[0]].add(x[1])
 
-coappearances_dict = dict()
-edge_list = []
-for x in data:
-    for y in title_dict[x[0]]:
-        if y < x[1]:
-            a = y
-            b = x[1]
+edge_set = set()
+edge_dict = dict()
+for x in title_dict.values():
+    for e in itertools.combinations(x, 2):
+        if e in edge_dict:
+            pass
+        elif (e[1], e[0]) in edge_dict:
+            e = (e[1], e[0])
         else:
-            a = x[1]
-            b = y
-        if (a, b) not in coappearances_dict:
-            coappearances_dict[(a, b)] = 1
-        else:
-            coappearances_dict[(a, b)] += 1
-        if coappearances_dict[(a, b)] == n_shared_projects_edge:
-            edge_list.append((a, b))
+            edge_dict[e] = 0
+        edge_dict[e] += 1
+        if edge_dict[e] == n_shared_projects_edge:
+            edge_set.add(e)
+edge_list = list(edge_set)
 
 with open("data/imdb.p", "wb") as f:
     pickle.dump(edge_list, f)
