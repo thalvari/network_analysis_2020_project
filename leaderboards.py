@@ -2,6 +2,21 @@ from collections import Counter
 
 import networkx as nx
 import pandas as pd
+from IPython.core.display import display, HTML
+
+
+def display_side_by_side(dfs:list, captions:list):
+    """Display tables side by side to save vertical space
+    Input:
+        dfs: list of pandas.DataFrame
+        captions: list of table captions
+    """
+    output = ""
+    combined = dict(zip(captions, dfs))
+    for caption, df in combined.items():
+        output += df.style.set_table_attributes("style='display:inline'").set_caption(caption)._repr_html_()
+        output += "\xa0\xa0\xa0"
+    display(HTML(output))
 
 
 def print_leaderboards(G, clusters, by="betweenness"):
@@ -43,9 +58,13 @@ def print_leaderboards(G, clusters, by="betweenness"):
     df_actor_info = df_actor_info.sort_values(by=by, ascending=False)
 
     # Print every cluster top5 actors
+    df_list = []
+    caption_list = []
     for i in range(len(counter) - 1):
-        print("")
-        print("Cluster index:", i)
+        # print("")
+        caption_list.append(f"Cluster index: {i}")
         cluster_top_actors = df_actor_info.loc[df_actor_info['cluster'] == i]
-        print("Cluster shape:", cluster_top_actors.shape)
-        print(cluster_top_actors.head())
+        # print("Cluster shape:", cluster_top_actors.shape)
+        df_list.append(cluster_top_actors.reset_index().drop(["cluster", "index", "nconst"], axis=1).head())
+
+    display_side_by_side(df_list, caption_list)
