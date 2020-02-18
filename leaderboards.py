@@ -4,7 +4,7 @@ import networkx as nx
 import pandas as pd
 
 
-def print_leaderboards(G, clusters):
+def print_leaderboards(G, clusters, by="betweenness"):
     counter = Counter(clusters)
     node_list = list(G.nodes())
 
@@ -24,6 +24,12 @@ def print_leaderboards(G, clusters):
     df_actor_info['degree'] = df_actor_info['nconst'].apply(getdegree)
     # print(df_actor_info.shape)
 
+    # Add betweeness
+    betweeness = nx.betweenness_centrality(G)
+    df_betweeness = pd.DataFrame(betweeness.items(), columns=['nconst', 'betweenness'])
+    df_actor_info = df_actor_info.merge(df_betweeness, how='inner')
+    # print(df_actor_info.shape)
+
     # Import Actor names data
     df_names = pd.read_csv("data/actor_names.csv", sep=",").reset_index()
     df_names = df_names.drop("index", axis=1)
@@ -34,7 +40,7 @@ def print_leaderboards(G, clusters):
     # print(df_actor_info.shape)
 
     # Sort results
-    df_actor_info = df_actor_info.sort_values(by=['cluster', 'degree'], ascending=False)
+    df_actor_info = df_actor_info.sort_values(by=by, ascending=False)
 
     # Print every cluster top5 actors
     for i in range(len(counter) - 1):
