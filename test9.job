@@ -3,7 +3,7 @@
 #SBATCH --workdir=/wrk/users/thalvari/network_analysis_2020_project/
 #SBATCH -o test9.txt
 #SBATCH -c 32
-#SBATCH --mem=64G
+#SBATCH --mem=32G
 #SBATCH -t 24:00:00
 
 srun papermill --log-output test9.ipynb test9.ipynb
