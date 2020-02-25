@@ -4,7 +4,7 @@ import imdb
 import pandas as pd
 
 with open("data/actors.pkl", "rb") as f:
-    df = pd.DataFrame(sorted(pickle.load(f))[:10], columns=["nconst"])
+    df = pd.DataFrame(sorted(pickle.load(f)), columns=["nconst"])
 
 print(df)
 
