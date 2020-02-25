@@ -43,6 +43,10 @@ nodes = set()
 for e in edge_list:
     nodes.add(e[0])
     nodes.add(e[1])
+
+with open("data/actors.pkl", "wb") as f:
+    pickle.dump(nodes, f)
+
 print(f"nodes: {len(nodes)}")
 print(f"edges: {len(edge_list)}")
 
