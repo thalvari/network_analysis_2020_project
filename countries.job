@@ -6,5 +6,5 @@
 #SBATCH --mem=32G
 #SBATCH -t 24:00:00
 
-srun python data_countries.py
+srun papermill --log-output countries.ipynb countries.ipynb
 srun sleep 60
