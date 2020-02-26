@@ -10,7 +10,7 @@ def get_country(nconst):
         if "birth info" in person.data:
             birth_place = person.data["birth info"]["birth place"]
             country = birth_place.split(",")[-1].strip()
-            country = country.split("now ")[-1].strip()
+            country = country.split("[now ")[-1].strip()
             if country[:3] == "in ":
                 country = country[3:].strip()
             country = "".join([ch for ch in country if ch.isalpha() or ch in {" ", "-"}])
