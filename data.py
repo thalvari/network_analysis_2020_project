@@ -36,7 +36,7 @@ for x in title_dict.values():
             edge_set.add(e)
 edge_list = list(edge_set)
 
-with open("data/imdb.pkl", "wb") as f:
+with open("data/edges.pkl", "wb") as f:
     pickle.dump(edge_list, f)
 
 nodes = set()

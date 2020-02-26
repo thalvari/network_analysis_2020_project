@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH -J na
 #SBATCH --workdir=/wrk/users/thalvari/network_analysis_2020_project/
-#SBATCH -o test7.txt
+#SBATCH -o custom_300.txt
 #SBATCH -c 32
 #SBATCH --mem=32G
 #SBATCH -t 24:00:00
 
-srun papermill --log-output test7.ipynb test7.ipynb
+srun papermill --log-output custom_300.ipynb custom_300.ipynb
 srun sleep 60

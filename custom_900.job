@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH -J na
 #SBATCH --workdir=/wrk/users/thalvari/network_analysis_2020_project/
-#SBATCH -o girvan_newman.txt
+#SBATCH -o custom_900.txt
 #SBATCH -c 32
 #SBATCH --mem=32G
-#SBATCH -t 7-00:00:00
+#SBATCH -t 24:00:00
 
-srun papermill --log-output girvan_newman.ipynb girvan_newman.ipynb
+srun papermill --log-output custom_900.ipynb custom_900.ipynb
 srun sleep 60
