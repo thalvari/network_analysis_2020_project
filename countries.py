@@ -13,10 +13,10 @@ def get_country(nconst):
             country = country.split("now")[-1].strip()
             country = country.split("in")[-1].strip()
             country = "".join([ch for ch in country if ch.isalpha() or ch in {" ", "-"}])
-        print(country + "|" + birth_place)
+        print(nconst + "|" + country + "|" + birth_place)
     except:
         country = ""
-        print("ERROR")
+        print(nconst + "|ERROR")
     return country
 
 
